@@ -17,6 +17,7 @@ def ask_gpt(text):
         text = f'THE USERS PREVIOUS CHATS: {chats}' + text
         response = model.generate_content('You are a personal assistant, more specificly JARVIS from the IRON man movies. The previous conversations with the user are given in the list Ahead. Please try to respond in the most movie accurate way and answer any specific questions related to jarvis (like what is the full form of it, how are you doing? etc.) in character . please do not include any formatting, including * or --: '+text)
         response = response.text.strip()
+        response = response.encode(errors='ignore')
         chats.append({"USER": text, "YOU":response})
         _ = response
         Speak(_)

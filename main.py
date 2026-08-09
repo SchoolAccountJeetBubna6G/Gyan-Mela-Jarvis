@@ -59,31 +59,31 @@ def main():
         #text = voice_to_text("google")
         try:
             print(text)
-            # for hotword in HOTWORDS:
-            #     try:
-            #         for word in text.split():
-            #             #if word == hotword:
-            #             if word == hotword:
-            #                 recognized_keywords = recognize_keywords(text)
-            #                 if recognized_keywords['keyword-present'] == True:
-            #                     print('reached here -- keyword detected')
-            #                     if recognized_keywords['keyword'] == "terminate":
-            #                         print('terminating')
-            #                         _ = False 
-            #                         return
-            #                     act_on_programs(recognized_keywords['keyword'], text)
-            #     except Exception:
-            #         pass
-            recognized_keywords = recognize_keywords(text)
-            if recognized_keywords['keyword-present'] == True:
-                print('reached here -- keyword detected')
-                if recognized_keywords['keyword'] == "terminate":
-                    print('terminating')
-                    _ = False 
-                    return
-                act_on_programs(recognized_keywords['keyword'], text)
+            for hotword in HOTWORDS:
+                try:
+                    for word in text.split():
+                        #if word == hotword:
+                        if word == hotword:
+                            recognized_keywords = recognize_keywords(text)
+                            if recognized_keywords['keyword-present'] == True:
+                                print('reached here -- keyword detected')
+                                if recognized_keywords['keyword'] == "terminate":
+                                    print('terminating')
+                                    _ = False 
+                                    return
+                                act_on_programs(recognized_keywords['keyword'], text)
+                except Exception:
+                    pass
+            # recognized_keywords = recognize_keywords(text)
+            # if recognized_keywords['keyword-present'] == True:
+            #     print('reached here -- keyword detected')
+            #     if recognized_keywords['keyword'] == "terminate":
+            #         print('terminating')
+            #         _ = False 
+            #         return
+            #     act_on_programs(recognized_keywords['keyword'], text)
         except Exception as e:
-            print('chutiya benchod speak something na motherchod', e)
+            print('error', e)
         
 if __name__ == '__main__':
     main()      
